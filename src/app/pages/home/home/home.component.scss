@@ -1,0 +1,56 @@
+@import '../../../../styles.scss';
+
+.content {
+    padding: 25px 16px;
+    max-width: 100%;
+    margin: 0 auto;
+
+    @include for-tablet-portrait-up {
+        max-width: 500px;
+    }
+
+    @include for-desktop-up {
+        max-width: 800px;
+    }
+
+    &__options {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    &__table-container {
+        margin-top: 50px;
+        overflow-x: auto;
+    }
+
+    &__table {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-collapse: collapse;
+        width: 100%;
+        text-align: left;
+        background-color: #fff;
+        tr td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            padding: 8px;
+        }
+
+        tr:hover {
+            background-color: #e1e1e1;
+        }
+    }
+    &__select {
+        padding: 5px;
+        border-radius: 10px;
+    }
+    &__table-options {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+    }
+}

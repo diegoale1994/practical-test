@@ -1,0 +1,83 @@
+<section class="content">
+  <h1>Formulario de registro</h1>
+  <div class="content__line"></div>
+
+  <div [formGroup]="form">
+    <div class="content__form">
+      <div class="content__column">
+        <div class="content__input" [class.error]="isTouchedAndInvalid('id')">
+          <label for="campo1">ID</label>
+          <input type="text" id="id" name="id" formControlName="id" (blur)="checkID()" />
+          <div *ngIf="isTouchedAndInvalid('id')">
+            <span *ngIf="getErrors('id')?.['required']" class="content__span-error">El ID es requerido.</span>
+            <span *ngIf="getErrors('id')?.['id']" class="content__span-error">Ya existe ese id</span>
+            <span *ngIf="getErrors('id')?.['minlength']" class="content__span-error">Debe tener minimo 3
+              caracteres</span>
+            <span *ngIf="getErrors('id')?.['maxlength']" class="content__span-error">Debe tener maximo 10
+              caracteres</span>
+          </div>
+        </div>
+        <div class="content__input" [class.error]="isTouchedAndInvalid('description')">
+          <label for="campo2">Descripcion</label>
+          <input type="text" id="description" name="description" formControlName="description" />
+          <div *ngIf="isTouchedAndInvalid('description')">
+            <span *ngIf="getErrors('description')?.['required']" class="content__span-error">La descripcion es
+              requerida.</span>
+            <span *ngIf="getErrors('description')?.['minlength']" class="content__span-error">Debe tener minimo 10
+              caracteres</span>
+            <span *ngIf="getErrors('description')?.['maxlength']" class="content__span-error">Debe tener maximo 200
+              caracteres</span>
+          </div>
+        </div>
+        <div class="content__input" [class.error]="isTouchedAndInvalid('date_release')">
+          <label for="campo2">Fecha liberacion</label>
+          <input type="date" id="date_release" name="date_release" formControlName="date_release" />
+          <div *ngIf="isTouchedAndInvalid('date_release')">
+            <span *ngIf="getErrors('date_release')?.['required']" class="content__span-error">El nombre es
+              requerido.</span>
+            <span *ngIf="getErrors('date_release')?.['majorDate']" class="content__span-error">Debe ser mayor a la fecha
+              actual</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content__column">
+        <div class="content__input" [class.error]="isTouchedAndInvalid('name')">
+          <label for="campo3">Nombre</label>
+          <input type="text" id="name" name="name" formControlName="name" />
+          <div *ngIf="isTouchedAndInvalid('name')">
+            <span *ngIf="getErrors('name')?.['required']" class="content__span-error">El nombre es requerido.</span>
+            <span *ngIf="getErrors('name')?.['minlength']" class="content__span-error">Debe tener minimo 5
+              caracteres</span>
+            <span *ngIf="getErrors('name')?.['maxlength']" class="content__span-error">Debe tener maximo 100
+              caracteres</span>
+          </div>
+        </div>
+        <div class="content__input" [class.error]="isTouchedAndInvalid('logo')">
+          <label for="campo4">Logo</label>
+          <input type="text" id="logo" name="logo" formControlName="logo" />
+          <div *ngIf="isTouchedAndInvalid('logo')">
+            <span *ngIf="getErrors('logo')?.['required']" class="content__span-error">El logo es requerido.</span>
+          </div>
+        </div>
+        <div class="content__input" [class.error]="isTouchedAndInvalid('date_revision')">
+          <label for="campo2">Fecha revision</label>
+          <input type="date" id="date_revision" name="date_revision" formControlName="date_revision" />
+          <div *ngIf="isTouchedAndInvalid('date_revision')">
+            <span *ngIf="getErrors('date_revision')?.['required']" class="content__span-error">El nombre es
+              requerido.</span>
+            <span *ngIf="getErrors('date_revision')?.['MajorDateOneYear']" class="content__span-error">Debe ser 1 año
+              mayor a fecha de liberacion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content__button-container">
+      <button class="btn-secondary" (click)="resetForm()">Reiniciar</button>
+      <button class="btn-primary" (click)="send()" [disabled]="form.invalid">
+        {{ action }}
+      </button>
+    </div>
+  </div>
+</section>
