@@ -7,49 +7,51 @@
             Agregar producto
         </button>
     </div>
-    <div class="content__table-container" *ngIf="products.length > 0">
-        <table class="content__table">
-            <thead>
-                <tr>
-                    <th>Logo</th>
-
-                    <th>Producto</th>
-
-                    <th>Descripcion</th>
-
-                    <th>Fecha de liberacion</th>
-
-                    <th>Fecha de revision</th>
-
-                    <th>Acciones</th>
+    <ng-container *ngIf="products.length > 0">
+        <div class="content__table-container" >
+            <table class="content__table">
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+    
+                        <th>Producto</th>
+    
+                        <th>Descripcion</th>
+    
+                        <th>Fecha de liberacion</th>
+    
+                        <th>Fecha de revision</th>
+    
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="
+              let item of products.slice(
+                (actualPage - 1) * itemsPerPageNumber,
+                actualPage * itemsPerPageNumber
+              )
+            ">
+                    <td>{{ item.logo }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.date_release }}</td>
+                    <td>{{ item.date_revision }}</td>
+                    <td>
+                        <select class="content__select" name="options" id="options"
+                            (change)="actionChange($event, item.id)">
+                            <option value="-">-</option>
+                            <option value="editar">Editar</option>
+                            <option value="eliminar">Eliminar</option>
+                        </select>
+                    </td>
                 </tr>
-            </thead>
-            <tr *ngFor="
-          let item of products.slice(
-            (actualPage - 1) * itemsPerPageNumber,
-            actualPage * itemsPerPageNumber
-          )
-        ">
-                <td>{{ item.logo }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.description }}</td>
-                <td>{{ item.date_release }}</td>
-                <td>{{ item.date_revision }}</td>
-                <td>
-                    <select class="content__select" name="options" id="options"
-                        (change)="actionChange($event, item.id)">
-                        <option value="-">-</option>
-                        <option value="editar">Editar</option>
-                        <option value="eliminar">Eliminar</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
+            </table>
+        </div>
         <div class="content__table-options">
             <p>
                 total de registros <strong>{{ products.length }}</strong>
             </p>
-            <div>
+            <div class="content__paginator">
                 <button class="btn-primary" (click)="actualPage = actualPage - 1" [disabled]="actualPage === 1">
                     Anterior
                 </button>
@@ -64,5 +66,6 @@
                 <option value="20">20</option>
             </select>
         </div>
-    </div>
+    </ng-container>
+
 </section>

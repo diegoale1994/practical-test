@@ -31,6 +31,7 @@
         width: 100%;
         text-align: left;
         background-color: #fff;
+
         tr td {
             padding: 8px;
             border-bottom: 1px solid #ddd;
@@ -44,13 +45,27 @@
             background-color: #e1e1e1;
         }
     }
+
     &__select {
+        max-height: 40px;
         padding: 5px;
         border-radius: 10px;
     }
+
     &__table-options {
         margin-top: 25px;
         display: flex;
         justify-content: space-between;
+    }
+
+    &__paginator {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include for-tablet-portrait-up {
+            flex-direction: row;
+        }
     }
 }

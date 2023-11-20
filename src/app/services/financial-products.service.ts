@@ -19,14 +19,14 @@ export class FinancialProductsService {
             date_release: this.cleanDate(p.date_release),
             date_revision: this.cleanDate(p.date_revision),
           };
-        })
-      )
+        }),
+      ),
     );
   }
 
   checkIdProduct(id: string): Observable<any> {
     return this._http.get(
-      `${environment.BASEURL}/bp/products/verification?id=${id}`
+      `${environment.BASEURL}/bp/products/verification?id=${id}`,
     );
   }
 
@@ -40,7 +40,8 @@ export class FinancialProductsService {
 
   deleteProduct(idProduct: string): Observable<any> {
     return this._http.delete(
-      `${environment.BASEURL}/bp/products/verification?id=${idProduct}`
+      `${environment.BASEURL}/bp/products?id=${idProduct}`,
+      { responseType: 'text' },
     );
   }
 

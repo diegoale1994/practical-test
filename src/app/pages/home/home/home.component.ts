@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private _authorService: AuthorService,
     private _router: Router,
-    private _financialProductsService: FinancialProductsService
+    private _financialProductsService: FinancialProductsService,
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
 
     if (e.target.value == ActionsEnum.DELETE) {
       let result = window.confirm(
-        '¿Estás seguro de querer eliminar el producto?'
+        '¿Estás seguro de querer eliminar el producto?',
       );
 
       if (result) {
